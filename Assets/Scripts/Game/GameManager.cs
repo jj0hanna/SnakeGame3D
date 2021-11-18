@@ -31,8 +31,6 @@ namespace Game
 
         public void GameOver()
         {
-            Debug.Log("GameOver");
-        
             gameOverPanel.SetActive(true);
             uiPoints.text = " Score:" + points.ToString();
         

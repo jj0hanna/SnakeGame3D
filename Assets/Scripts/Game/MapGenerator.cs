@@ -8,6 +8,8 @@ namespace Game
         
        [SerializeField] private GameObject prefabwall;
        [SerializeField] private GameObject prefabGround;
+       [SerializeField] private GameObject preabChristmasLight;
+       [SerializeField] private GameObject preabBackground;
 
        
         void Start()
@@ -38,6 +40,24 @@ namespace Game
                 
 
                     GameObject tr = Instantiate(prefabGround, new Vector3(float.Parse(pos[0]), float.Parse(pos[1]), float.Parse(pos[2])), Quaternion.identity);
+                    tr.transform.localScale = new Vector3(float.Parse(scale[0]), float.Parse(scale[1]), float.Parse(scale[2]));
+                }
+                else if (sArr2[0] == "L")
+                {
+                    string[] pos = sArr2[1].Split(',');
+                    string[] scale = sArr2[2].Split(',');
+                
+
+                    GameObject tr = Instantiate(preabChristmasLight, new Vector3(float.Parse(pos[0]), float.Parse(pos[1]), float.Parse(pos[2])), Quaternion.identity);
+                    tr.transform.localScale = new Vector3(float.Parse(scale[0]), float.Parse(scale[1]), float.Parse(scale[2]));
+                }
+                else if (sArr2[0] == "B")
+                {
+                    string[] pos = sArr2[1].Split(',');
+                    string[] scale = sArr2[2].Split(',');
+                
+
+                    GameObject tr = Instantiate(preabBackground, new Vector3(float.Parse(pos[0]), float.Parse(pos[1]), float.Parse(pos[2])), Quaternion.identity);
                     tr.transform.localScale = new Vector3(float.Parse(scale[0]), float.Parse(scale[1]), float.Parse(scale[2]));
                 }
                 

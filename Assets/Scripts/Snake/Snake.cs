@@ -20,7 +20,7 @@ namespace Snake
         private int boosters = 0;
         private Vector3 newDirection = Vector3.right;
         private Vector3 origPos, targetPos;
-        private float maxSpeed = 0.08f;
+        private float maxSpeed = 0.05f;
         private float currentspeed;
         
     
