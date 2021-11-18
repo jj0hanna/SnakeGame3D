@@ -38,11 +38,7 @@ namespace Snake
             this.tail = node;
             this.count++;
         }
-    
-    
-    
-    
-    
+        
         public int Count
         {
             get
@@ -111,23 +107,5 @@ namespace Snake
                 throw new IndexOutOfRangeException(); // throw runTime error
             }
         }
-
-        public T test(int index)
-        {
-        
-            int counter = 0;
-            for ( DlinkListNode currentNode = this.head ; currentNode != null; currentNode = currentNode.next, counter++)
-            {
-                if (counter == index)
-                {
-                    return currentNode.data;
-                }
-            
-            
-            }
-            throw new IndexOutOfRangeException(); // throw runTime error
-
-        }
-
     }
 }

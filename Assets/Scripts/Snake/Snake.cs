@@ -11,22 +11,21 @@ namespace Snake
     {
         public GameManager gameManager;
         
-        
         [SerializeField] private Transform bodyPartPrefab;
         [SerializeField] private float speed = 0.5f;
         [SerializeField] private float addSpeed = 0.01f;
         [SerializeField] private float removeSpeed = 5f;
         [SerializeField] private float timer = 5;
-
         
         private int boosters = 0;
         private Vector3 newDirection = Vector3.right;
         private Vector3 origPos, targetPos;
-        private float maxSpeed = 0.01f;
+        private float maxSpeed = 0.08f;
         private float currentspeed;
         
     
         private SnakeSlinkedlist<SnakeBody> list = new SnakeSlinkedlist<SnakeBody>();
+        
         private class SnakeBody
         {
             public Transform transform;
@@ -65,7 +64,7 @@ namespace Snake
                 {
                     if (newDirection == Vector3.right)
                     {
-                        transform.Rotate(0,-90,0);
+                        transform.Rotate(0,-90,0); // so the snake rotate to the side its going
                     }
                     else
                     {
@@ -143,7 +142,7 @@ namespace Snake
                     speed = Mathf.Clamp(speed - addSpeed, maxSpeed, speed);
                 }
                 
-                GameManager.points += 1;
+                GameManager.points += 1; // fruit == one more point
                 AddBodyPart(); // add bodypart to list if eat fruit
             }
             if (other.CompareTag("Booster"))
@@ -154,8 +153,6 @@ namespace Snake
             if (other.CompareTag("Wall") || other.CompareTag("BodyPart"))
             {
                 gameManager.GetComponent<GameManager>().GameOver();
-                Debug.Log(other.transform.position);
-                Debug.Log("GameOver");
             }
         }
         private void AddBodyPart()
@@ -170,7 +167,6 @@ namespace Snake
         {
             while (true)
             {
-                //SnakeBody currentNode;
                 Vector3 currentDirection = newDirection;
                 Vector3 oldDirection;
 
@@ -184,12 +180,11 @@ namespace Snake
                 yield return new WaitForSeconds(speed * boostermulti);
             }
         }
-
         private IEnumerator SlowSpeed()
         {
             boosters++;
-            yield return new WaitForSeconds(timer);
-            boosters--;
+            yield return new WaitForSeconds(timer); // after a time the boost runs out
+            boosters--; 
         }
     }
 }

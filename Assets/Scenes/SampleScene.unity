@@ -1528,7 +1528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7b645a0b418d047991104dfbf420a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Prefabwall: {fileID: 3025667167198994879, guid: 83081354cff1e41409335f65d2bd433d, type: 3}
+  prefabwall: {fileID: 3025667167198994879, guid: 83081354cff1e41409335f65d2bd433d, type: 3}
   prefabGround: {fileID: 3025667167198994879, guid: 0533bde34bd3afc4ba69eca6ab71ad38, type: 3}
 --- !u!4 &775595342
 Transform:
@@ -2047,8 +2047,8 @@ Transform:
   m_LocalPosition: {x: 0.546, y: 2.05, z: 0}
   m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_Children:
-  - {fileID: 461912384}
   - {fileID: 586270761}
+  - {fileID: 461912384}
   - {fileID: 437237155}
   - {fileID: 407517575}
   m_Father: {fileID: 496021258}
@@ -2669,10 +2669,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boosters:
-  - {fileID: 4556771236394489105, guid: 6a1ed522198f19a4fb04740e1345a2fd, type: 3}
+  - {fileID: 5078339771101127351, guid: f3429ce31febaa944bb5dbb09b9b2f15, type: 3}
   obstacles: []
   fruitPrefab: {fileID: 8641280216712491670, guid: c58bd2d3a77fe794b8c1701804c9e8c2, type: 3}
-  player: {fileID: 0}
   spawnInterval: 1
   spawnIntervalboosters: 10
   spawnIntervalobstacles: 1

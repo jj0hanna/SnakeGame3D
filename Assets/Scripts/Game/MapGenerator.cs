@@ -6,7 +6,7 @@ namespace Game
     public class MapGenerator : MonoBehaviour
     {
         
-       [SerializeField] private GameObject Prefabwall;
+       [SerializeField] private GameObject prefabwall;
        [SerializeField] private GameObject prefabGround;
 
        
@@ -26,9 +26,9 @@ namespace Game
                 {
                     string[] pos = sArr2[1].Split(',');
                     string[] scale = sArr2[2].Split(',');
-                
-
-                    GameObject tr = Instantiate(Prefabwall, new Vector3(float.Parse(pos[0]), float.Parse(pos[1]), float.Parse(pos[2])), Quaternion.identity);
+                    
+                    
+                    GameObject tr = Instantiate(prefabwall, new Vector3(float.Parse(pos[0]), float.Parse(pos[1]), float.Parse(pos[2])), Quaternion.identity);
                     tr.transform.localScale = new Vector3(float.Parse(scale[0]), float.Parse(scale[1]), float.Parse(scale[2]));
                 }
                 else if (sArr2[0] == "F")
@@ -42,7 +42,9 @@ namespace Game
                 }
                 
             }
-            
+            ////////////////////////////////////////////////////////////////////////
+            // saving for my self ,A other way to loop through if the txt file would look different
+            /////////////////////////////////////////////////////////////////////////
         //  for (int i = 0; i < sArr.Length; i++)
         //  {
         //      for (int j = 0; j < sArr[i].Length; j++)
@@ -55,12 +57,6 @@ namespace Game
         //      }
         //  }
             
-        }
-
-        
-        void Update()
-        {
-        
         }
     }
 }

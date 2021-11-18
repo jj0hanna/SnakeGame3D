@@ -18,7 +18,6 @@ namespace Game
         }
         public void RestartGame()
         {
-        
             SceneManager.LoadScene("SampleScene");
         }
     }

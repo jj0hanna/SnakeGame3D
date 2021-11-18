@@ -10,7 +10,7 @@ namespace SpawnObjects
         public Transform[] obstacles;
     
         public GameObject fruitPrefab;
-        public GameObject player;
+        //public GameObject player;
     
 
         [SerializeField] private float spawnInterval = 1; // for Coroutine do i want to use? and what else should i have?
@@ -20,12 +20,12 @@ namespace SpawnObjects
         //private Vector3 currentFoodPos;
         private Vector3 spawnPosition;
     
-        private Camera _camera;
+        //private Camera _camera;
     
     
         void Awake()
         {
-            _camera = Camera.main;
+            //_camera = Camera.main;
         }
 
         private void Start()
@@ -41,23 +41,19 @@ namespace SpawnObjects
 
         public IEnumerator SpawnBoosters()
         {
-            yield return new WaitForSeconds(spawnIntervalboosters);
+            yield return new WaitForSeconds(spawnIntervalboosters);// wait this time before start spawning
             while (true)
             {
-            
                 spawnPosition = new Vector3(Random.Range(18f, -18f), Random.Range(3f, 3f), Random.Range(18f,-18f));
             
                 Transform booster = boosters[Random.Range(0, boosters.Length)];
-                Transform newPosition = Instantiate(booster, new Vector3(Mathf.Round(spawnPosition.x), Mathf.Round(spawnPosition.y), Mathf.Round(spawnPosition.z)), Quaternion.identity);
+                Instantiate(booster, new Vector3(Mathf.Round(spawnPosition.x), Mathf.Round(spawnPosition.y), Mathf.Round(spawnPosition.z)), Quaternion.identity);
         
                 yield return new WaitForSeconds(spawnIntervalboosters);
             }
-        
         }
         IEnumerator Spawnobsstacles()
         {
-        
-        
             yield return new WaitForSeconds(spawnIntervalobstacles);
         }
 
