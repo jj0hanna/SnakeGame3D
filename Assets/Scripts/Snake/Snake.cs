@@ -18,10 +18,7 @@ namespace Snake
         [SerializeField] private float removeSpeed = 5f;
         [SerializeField] private float timer = 5;
 
-        private int hp;
-        //public static int fruits = 0;
-
-        //private int fruits = 0;
+        
         private int boosters = 0;
         private Vector3 newDirection = Vector3.right;
         private Vector3 origPos, targetPos;
@@ -43,21 +40,16 @@ namespace Snake
 
                 return Olddirection;
             }
-
             public SnakeBody(Transform transform, Vector3 direction)
             {
                 this.transform = transform;
                 this.direction = direction;
             }
-
         }
-    
-        //[SerializeField] private Transform head;
-        //[SerializeField] private Vector3 startPos;
-    
+        
         private void Awake()
         {
-            list.Add(new SnakeBody(transform, Vector3.zero)); // adding head, need to fix direction
+            list.Add(new SnakeBody(transform, Vector3.zero)); // adding head to list
             StartCoroutine(MovePlayer());
         }
 
@@ -65,19 +57,80 @@ namespace Snake
         {
             if (Input.GetKey(KeyCode.W))
             {
-                newDirection = Vector3.forward;
+                if (newDirection == Vector3.back)
+                {
+                    newDirection = Vector3.back;
+                }
+                else if (newDirection!= Vector3.forward)
+                {
+                    if (newDirection == Vector3.right)
+                    {
+                        transform.Rotate(0,-90,0);
+                    }
+                    else
+                    {
+                        transform.Rotate(0,90,0);
+                    }
+                    newDirection = Vector3.forward;
+                }
             } 
             if (Input.GetKey(KeyCode.D))
             {
-                newDirection = Vector3.right;
+                if (newDirection == Vector3.left)
+                {
+                    newDirection = Vector3.left;
+                    
+                }
+                else if (newDirection != Vector3.right)
+                {
+                    if (newDirection == Vector3.forward)
+                    {
+                        transform.Rotate(0,90,0);
+                    }
+                    else
+                    {
+                        transform.Rotate(0,-90,0);
+                    }
+                    newDirection = Vector3.right;
+                }
             } 
             if (Input.GetKey(KeyCode.S))
             {
-                newDirection = Vector3.back;
+                if (newDirection == Vector3.forward)
+                {
+                    newDirection = Vector3.forward;
+                }
+                else if(newDirection != Vector3.back)
+                {
+                    if (newDirection == Vector3.right)
+                    {
+                        transform.Rotate(0,90,0);
+                    }
+                    else
+                    {
+                        transform.Rotate(0,-90,0);
+                    }
+                    newDirection = Vector3.back;
+                }
             } 
             if (Input.GetKey(KeyCode.A))
             {
-                newDirection = Vector3.left;
+                if (newDirection == Vector3.right)
+                {
+                    newDirection = Vector3.right;
+                }
+                else if (newDirection != Vector3.left)
+                {
+                    if (newDirection == Vector3.forward)
+                    {
+                        transform.Rotate(0,-90,0);
+                    }
+                    else
+                    {
+                        transform.Rotate(0,90,0);
+                    }
+                    newDirection = Vector3.left;
+                }
             }
         }
 
@@ -85,15 +138,13 @@ namespace Snake
         {
             if (other.CompareTag("Fruit"))
             {
-                
                 if (speed >= maxSpeed) // change speed if eat a fruit
                 {
                     speed = Mathf.Clamp(speed - addSpeed, maxSpeed, speed);
                 }
-
+                
                 GameManager.points += 1;
-                AddBodyPart();
-                Debug.Log("AddBodyPart");
+                AddBodyPart(); // add bodypart to list if eat fruit
             }
             if (other.CompareTag("Booster"))
             {
@@ -103,29 +154,29 @@ namespace Snake
             if (other.CompareTag("Wall") || other.CompareTag("BodyPart"))
             {
                 gameManager.GetComponent<GameManager>().GameOver();
+                Debug.Log(other.transform.position);
                 Debug.Log("GameOver");
             }
         }
-
-        public void AddBodyPart()
+        private void AddBodyPart()
         {
             Vector3 dirr = list[list.Count - 1].direction;
             Vector3 trans = list[list.Count - 1].transform.position;
 
-            Vector3 newPosition = trans - dirr;
+            Vector3 newPosition = trans - dirr; // calc new position for new bodypart
             list.Add(new SnakeBody(Instantiate(bodyPartPrefab, newPosition, Quaternion.identity), dirr));
         }
         private IEnumerator MovePlayer()
         {
             while (true)
             {
-                SnakeBody currentNode;
+                //SnakeBody currentNode;
                 Vector3 currentDirection = newDirection;
                 Vector3 oldDirection;
 
                 for (int i = 0; i < list.Count; i++, currentDirection = oldDirection )
                 {
-                    currentNode = list[i];
+                    SnakeBody currentNode = list[i];
                     oldDirection = currentNode.Move(currentDirection);
                 }
                 

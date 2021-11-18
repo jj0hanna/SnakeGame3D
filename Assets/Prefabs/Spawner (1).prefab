@@ -46,7 +46,7 @@ MonoBehaviour:
   boosters:
   - {fileID: 4556771236394489105, guid: 6a1ed522198f19a4fb04740e1345a2fd, type: 3}
   obstacles: []
-  fruitPrefab: {fileID: 2181811235362385618, guid: 70ffd3da28d92b34693d36f1d3e98055, type: 3}
+  fruitPrefab: {fileID: 8641280216712491670, guid: c58bd2d3a77fe794b8c1701804c9e8c2, type: 3}
   player: {fileID: 0}
   spawnInterval: 1
   spawnIntervalboosters: 1

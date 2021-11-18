@@ -14,7 +14,7 @@ namespace SpawnObjects
         // Update is called once per frame
         void Update()
         {
-        
+            
         }
         private void OnTriggerEnter(Collider other) //funkar om prefab är i hierachy och destroy inte är på
         {
