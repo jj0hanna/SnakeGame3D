@@ -20,5 +20,10 @@ namespace Game
         {
             SceneManager.LoadScene("SampleScene");
         }
+
+        public void QuitGame()
+        {
+            Application.Quit();
+        }
     }
 }

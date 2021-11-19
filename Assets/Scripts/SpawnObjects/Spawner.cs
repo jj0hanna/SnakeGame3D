@@ -23,7 +23,7 @@ namespace SpawnObjects
     
         void Awake()
         {
-            //_camera = Camera.main;
+            
         }
 
         private void Start()
